@@ -6,16 +6,23 @@
 //         count = count--;
 //     }
 // }
-let text = document.getElementById("abc");
-let count = 0;
 
-text.style.fontSize = "30px";
-setInterval(function () {
-    if (count < 10) {
-        text.innerHTML += "たくとのばか  ";
-        count++;
-    } else {
-        text.innerHTML += "<br>";
-        count = 0;
+const button = document.getElementById("button");
+const sumText = document.getElementById("sum")
+button.addEventListener("click", function() {
+    sumText.textContent =""
+    const inputNumber = document.getElementById("input").value;
+    if (isNaN(inputNumber)){
+        sumText.textContent = inputNumber + "は数値じゃない"
+    }else if (inputNumber == "") {
+        sumText.textContent = "数値入力してください"
+    }else {
+        for (let i=1; i<=9; i++) {
+            let result = inputNumber * i;
+            const Result = document.createElement("p");
+            sumText.appendChild(Result)
+            Result.textContent = inputNumber + "x" + i + "=" + result
+        }
     }
-}, 60);
+});
+
