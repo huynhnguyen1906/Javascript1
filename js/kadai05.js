@@ -8,3 +8,9 @@ for (let i = 0; i < blankLink.length; i++) {
         window.open(link, "kadai05");
     }) 
 }
+// blankLink.forEach((link) => {
+//     link.addEventListener("click", (event) => {
+//         event.preventDefault();
+//         window.open(link.href, "kadai05");
+//     });
+// });
