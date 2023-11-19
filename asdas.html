@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z-Index Animation</title>
+  <style>
+    .parent {
+      position: relative;
+    }
+
+    .child {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      transition: z-index 1s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="child" style="z-index: 5; background-color: red;"></div>
+    <div class="child" style="z-index: 4; background-color: orange;"></div>
+    <div class="child" style="z-index: 3; background-color: yellow;"></div>
+    <div class="child" style="z-index: 2; background-color: green;"></div>
+    <div class="child" style="z-index: 1; background-color: blue;"></div>
+  </div>
+
+  <script>
+     function updateZIndex() {
+    const parent = document.querySelector('.parent');
+    const children = Array.from(parent.children);
+
+    // Lấy giá trị z-index của phần tử cuối cùng
+    const lastZIndex = parseInt(children[children.length - 1].style.zIndex);
+
+    // Dịch chuyển mảng z-index sang phải
+    for (let i = children.length - 1; i > 0; i--) {
+      const previousZIndex = parseInt(children[i - 1].style.zIndex);
+      children[i].style.zIndex = previousZIndex;
+    }
+
+    // Thiết lập giá trị z-index mới cho phần tử đầu tiên
+    children[0].style.zIndex = lastZIndex;
+
+    // Cập nhật sau mỗi giây
+    setTimeout(updateZIndex, 1000);
+  }
+
+  // Bắt đầu cập nhật z-index
+  updateZIndex();
+  </script>
+</body>
+</html>
