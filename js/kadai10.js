@@ -1,14 +1,16 @@
-const naviBar = document.getElementById('category-navi');
-//category-navi　ていう要素を宣言する。（css見てから何を宣言するか決める）
+const naviBar = document.getElementById("category-navi")
 
+// scroll イベントのリスナーを追加
+window.addEventListener("scroll", () => {
+	// スクロールされた垂直位置を取得
+	const scrollY = window.scrollY
 
-window.addEventListener('scroll', () => {
-//ブラウザの画面全体が動くときにイベントをかける
-
-    const scrollY = window.scrollY;
-    //縦方向（Ｙ）に動いた距離をとる
-
-    naviBar.style.top = scrollY + 'px'
-    //category-naviのトップ(Y)の新し位置は縦方向（Ｙ）に動いた距離によって、決める
-
+	// もしスクロールされた位置がナビバーの上端よりも下ならば
+	if (scrollY > naviBar.getBoundingClientRect().top) {
+		// ナビバーの top プロパティをスクロール位置に合わせて更新
+		naviBar.style.top = scrollY + "px"
+	} else {
+		// スクロール位置がナビバーの上端よりも上ならば、ナビバーを画面上端に固定
+		naviBar.style.top = "0px"
+	}
 })
