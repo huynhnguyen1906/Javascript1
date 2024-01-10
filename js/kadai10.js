@@ -9,7 +9,6 @@ window.addEventListener("scroll", () => {
 	if (scrollY > naviBarTop) {
 		// ナビバーの top プロパティをスクロール位置に合わせて更新
 		naviBar.style.top = scrollY + "px"
-		console.log("avs")
 	} else {
 		// スクロール位置がナビバーの上端よりも上ならば、ナビバーを画面上端に固定
 		naviBar.style.top = "0px"
